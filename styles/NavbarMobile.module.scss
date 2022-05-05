@@ -1,0 +1,9 @@
+.navbar_mobile {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .navbar_mobile {
+    display: flex;
+  }
+}
