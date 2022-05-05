@@ -4,6 +4,10 @@ import Head from 'next/head';
 function Meta({ title, description, keywords }) {
   return (
     <Head>
+      <style>
+        @import
+        url('https://fonts.googleapis.com/css2?family=Prata&display=swap');
+      </style>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="keywords" content={keywords} />
       <meta name="description" content={description} />
