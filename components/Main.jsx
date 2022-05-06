@@ -5,19 +5,11 @@ import styles from '../styles/Main.module.scss';
 export default function Main({ items }) {
   return (
     <div className={styles.main}>
-      <div className={styles.left}>
-        <ul>
-          <li>Косметика</li>
-          <li>БАДы</li>
-          <li>Для дома</li>
-          <li>Книги</li>
-          <li>Разное</li>
-        </ul>
-      </div>
       <div className={styles.right}>
         {items &&
           items.map((item) => (
             <Item
+              id={item.id}
               title={item.attributes.Name}
               description={item.attributes.Description}
               image={

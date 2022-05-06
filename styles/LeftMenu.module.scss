@@ -1,0 +1,14 @@
+.left {
+  width: 15rem;
+  background: #005395;
+  height: calc(100vh - 6rem);
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  padding-top: 2rem;
+  padding-left: 2rem;
+  li {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+}
