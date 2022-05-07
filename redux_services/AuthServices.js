@@ -13,6 +13,14 @@ const register = async (formData) => {
   return res;
 };
 
+const login = async (formData) => {
+  const res = await axios.post(api_url + 'auth/local/', formData);
+  if (typeof window !== 'undefined') {
+    if (res) localStorage.setItem('user', JSON.stringify(res.data));
+  }
+  return res;
+};
+
 const logout = () => {
   if (typeof window !== 'undefined') {
     localStorage.removeItem('user');
@@ -22,6 +30,7 @@ const logout = () => {
 const authServices = {
   register,
   logout,
+  login,
 };
 
 export default authServices;

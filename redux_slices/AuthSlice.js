@@ -12,7 +12,6 @@ const initialState = {
   isError: false,
   isSuccess: false,
   isLoading: false,
-  message: '',
 };
 
 export const RegAuth = createAsyncThunk(
@@ -20,6 +19,23 @@ export const RegAuth = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       return await authServices.register(formData);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.response ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const LoginAuth = createAsyncThunk(
+  'auth/login',
+  async (formData, thunkAPI) => {
+    try {
+      return await authServices.login(formData);
     } catch (error) {
       const message =
         (error.response &&
@@ -56,7 +72,7 @@ export const authSlice = createSlice({
       state.isError = false;
       state.isSuccess = false;
       state.isLoading = false;
-      state.message = '';
+      //   state.message = '';
     },
   },
   extraReducers: (builder) => {
@@ -77,7 +93,25 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isAuthenticated = false;
         state.message = action.payload.data;
+      })
+      .addCase(LoginAuth.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(LoginAuth.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isAuthenticated = true;
+        state.User = action.payload.data.user.username;
+        state.token = action.payload.data.jwt;
+        state.user_id = action.payload.data.user.id;
+      })
+      .addCase(LoginAuth.rejected, (state, action) => {
+        state.isError = true;
+        state.isLoading = false;
+        state.message = action.payload.data;
       });
+    // const User_local = JSON.parse(localStorage.getItem('user'));
+
     //   .addCase(LogOut.fulfilled, (state) => {
     //       state.
     //   })
