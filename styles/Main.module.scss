@@ -2,7 +2,6 @@
   display: flex;
   color: white;
   height: calc(100vh - 6rem);
-  // width: calc(100vw - 15rem);
   background: black;
 
   .right {
@@ -11,6 +10,5 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: space-around;
-    // align-items: center;
   }
 }

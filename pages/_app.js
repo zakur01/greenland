@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { store } from '../app/store';
 
 function MyApp({ Component, pageProps }) {
-  const [list, setList] = useState();
+  // const [list, setList] = useState();
   return (
     <Provider store={store}>
       <Layout>

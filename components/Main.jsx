@@ -3,6 +3,7 @@ import Item from './Item';
 import styles from '../styles/Main.module.scss';
 
 export default function Main({ items }) {
+  console.log(items);
   return (
     <div className={styles.main}>
       <div className={styles.right}>
@@ -21,13 +22,4 @@ export default function Main({ items }) {
       </div>
     </div>
   );
-}
-export async function getStaticProps() {
-  const res = await fetch('http:/localhost:1337/api/products?populate=*');
-  const data = await res.json();
-  const items = data.data;
-  console.log(items);
-  return {
-    props: { items },
-  };
 }

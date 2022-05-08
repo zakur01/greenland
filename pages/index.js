@@ -29,6 +29,15 @@ export default function Home({ items }) {
     </div>
   );
 }
+export async function getStaticProps() {
+  const res = await fetch('http:/localhost:1337/api/products?populate=*');
+  const data = await res.json();
+  const items = data.data;
+  // console.log
+  return {
+    props: { items },
+  };
+}
 
 // export async function getStaticProps() {
 //   // продукция
@@ -41,12 +50,3 @@ export default function Home({ items }) {
 //     props: { products },
 //   };
 // }
-export async function getStaticProps() {
-  const res = await fetch('http:/localhost:1337/api/products?populate=*');
-  const data = await res.json();
-  const items = data.data;
-  console.log(items);
-  return {
-    props: { items },
-  };
-}
