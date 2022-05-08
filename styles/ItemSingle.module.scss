@@ -2,4 +2,33 @@
   background-color: #8a3d7b;
   width: calc(100vw - 15rem);
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  div {
+    width: 60rem;
+    height: 40rem;
+    // border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    a {
+      background: black;
+      color: white;
+      padding: 1rem;
+      border-radius: 5px;
+      transition: all 0.4s ease;
+      &:hover {
+        background: white;
+        color: black;
+      }
+    }
+    h1 {
+    }
+  }
+  img {
+    // opacity: 0.2;
+    border-radius: 10px;
+  }
 }
