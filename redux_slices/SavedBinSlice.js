@@ -23,6 +23,23 @@ export const GetItems = createAsyncThunk('savedbin/get', async () => {
   }
 });
 
+export const FilterItems = createAsyncThunk(
+  'savedbin/filter',
+  async (filt, thunkAPI) => {
+    try {
+      return await savedBinServices.filter(filt);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.response ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const SavedBinSlice = createSlice({
   name: 'savedbin',
   initialState,
@@ -39,6 +56,14 @@ export const SavedBinSlice = createSlice({
       .addCase(GetItems.rejected, (state) => {
         state.isError = true;
         state.isLoading = false;
+      })
+      .addCase(FilterItems.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(FilterItems.fulfilled, (state, action) => {
+        state.isSuccess = true;
+        state.isLoading = false;
+        state.main_items = action.payload.data.data;
       });
   },
 });

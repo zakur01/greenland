@@ -7,15 +7,15 @@ import { GetItems } from '../redux_slices/SavedBinSlice';
 export default function Main({ items }) {
   const { main_items } = useSelector((state) => state.savedbin);
   const dispatch = useDispatch();
-  console.log(items);
+  // console.log(items);
   useEffect(() => {
     dispatch(GetItems());
   }, []);
   return (
     <div className={styles.main}>
       <div className={styles.right}>
-        {items &&
-          items.map((item) => (
+        {main_items &&
+          main_items.map((item) => (
             <Item
               id={item.id}
               title={item.attributes.Name}
