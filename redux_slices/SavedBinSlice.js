@@ -40,6 +40,23 @@ export const AddToFavorites = createAsyncThunk(
   }
 );
 
+// export const CleanFavorites = createAsyncThunk(
+//   'savedbin/cleanfavorites',
+//   async () => {
+//     try {
+//       return await savedBinServices.cleanFavorites();
+//     } catch (error) {
+//       const message =
+//         (error.response &&
+//           error.response.data &&
+//           error.response.data.message) ||
+//         error.response ||
+//         error.toString();
+//       return thunkAPI.rejectWithValue(message);
+//     }
+//   }
+// );
+
 export const FilterItems = createAsyncThunk(
   'savedbin/filter',
   async (filt, thunkAPI) => {
@@ -60,6 +77,11 @@ export const FilterItems = createAsyncThunk(
 export const SavedBinSlice = createSlice({
   name: 'savedbin',
   initialState,
+  reducers: {
+    CleanFavorites: (state) => {
+      state.saved_items = [];
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(GetItems.pending, (state) => {
@@ -90,7 +112,16 @@ export const SavedBinSlice = createSlice({
         state.isLoading = false;
         state.saved_items.push(action.payload.data.data[0]);
       });
+    // .addCase(CleanFavorites.pending, (state) => {
+    //   state.isLoading = true;
+    // })
+    // .addCase(CleanFavorites.fulfilled, (state) => {
+    //   state.isLoading = false;
+    //   state.isSuccess = true;
+    //   state.saved_items = [];
+    // });
   },
 });
+export const { CleanFavorites } = SavedBinSlice.actions;
 
 export default SavedBinSlice.reducer;

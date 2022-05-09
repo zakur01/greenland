@@ -28,6 +28,7 @@ const savedbinservices = {
   get,
   filter,
   addToFavorites,
+  // cleanFavorites,
 };
 
 export default savedbinservices;
