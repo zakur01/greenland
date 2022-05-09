@@ -1,8 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import savedBinServices from '../redux_services/SavedBinServices';
 
+const savedItemsLocal =
+  typeof window !== 'undefined'
+    ? JSON.parse(localStorage.getItem('favorites'))
+    : [];
+
 const initialState = {
-  saved_items: [],
+  saved_items: savedItemsLocal ? savedItemsLocal : [],
   bin_items: [],
   main_items: [],
   // isAuthenticated: false,
