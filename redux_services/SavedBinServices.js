@@ -21,6 +21,14 @@ const addToFavorites = async (title) => {
       title +
       '&populate=*'
   );
+  if (typeof window !== 'undefined') {
+    let oldFavorites = JSON.parse(localStorage.getItem('favorites'));
+    if (oldFavorites == null) oldFavorites = [];
+    console.log(oldFavorites);
+    console.log(res.data.data[0]);
+    oldFavorites.push(res.data.data[0]);
+    localStorage.setItem('favorites', JSON.stringify(oldFavorites));
+  }
   return res;
 };
 
