@@ -23,6 +23,23 @@ export const GetItems = createAsyncThunk('savedbin/get', async () => {
   }
 });
 
+export const AddToFavorites = createAsyncThunk(
+  'savedbin/addtofavorites',
+  async (title) => {
+    try {
+      return await savedBinServices.addToFavorites(title);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.response ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const FilterItems = createAsyncThunk(
   'savedbin/filter',
   async (filt, thunkAPI) => {
@@ -64,6 +81,14 @@ export const SavedBinSlice = createSlice({
         state.isSuccess = true;
         state.isLoading = false;
         state.main_items = action.payload.data.data;
+      })
+      .addCase(AddToFavorites.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(AddToFavorites.fulfilled, (state, action) => {
+        state.isSuccess = true;
+        state.isLoading = false;
+        state.saved_items.push(action.payload.data.data[0]);
       });
   },
 });

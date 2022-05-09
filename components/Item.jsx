@@ -2,7 +2,13 @@ import React from 'react';
 import styles from '../styles/Item.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+import { AddToFavorites } from '../redux_slices/SavedBinSlice';
 function Item({ title, description, image, id }) {
+  const dispatch = useDispatch();
+  const addToFavorites = () => {
+    dispatch(AddToFavorites(title));
+  };
   return (
     <Link href={`/${id}`}>
       <div className={styles.item}>
@@ -20,6 +26,7 @@ function Item({ title, description, image, id }) {
             />
           </div>
         </div>
+        <button onClick={addToFavorites}>В избранное</button>
       </div>
     </Link>
   );

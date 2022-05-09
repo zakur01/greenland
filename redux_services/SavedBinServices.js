@@ -15,9 +15,19 @@ const filter = async (filt) => {
   return res;
 };
 
+const addToFavorites = async (title) => {
+  const res = await axios.get(
+    'http://localhost:1337/api/products?filters[Name][$eq]=' +
+      title +
+      '&populate=*'
+  );
+  return res;
+};
+
 const savedbinservices = {
   get,
   filter,
+  addToFavorites,
 };
 
 export default savedbinservices;
