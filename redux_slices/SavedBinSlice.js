@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import savedBinServices from '../redux_services/SavedBinServices';
+import axios from 'axios';
 
 const savedItemsLocal =
   typeof window !== 'undefined'
@@ -8,6 +9,7 @@ const savedItemsLocal =
 
 const initialState = {
   saved_items: savedItemsLocal ? savedItemsLocal : [],
+  saved_lil: [],
   bin_items: [],
   main_items: [],
   // isAuthenticated: false,
@@ -19,6 +21,18 @@ const initialState = {
 export const GetItems = createAsyncThunk('savedbin/get', async () => {
   try {
     return await savedBinServices.get();
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.response ||
+      error.toString();
+    return thunkAPI.rejectWithValue(message);
+  }
+});
+
+export const GetSaved = createAsyncThunk('savedbin/saved', async (user_id) => {
+  try {
+    return await savedBinServices.getSaved(user_id);
   } catch (error) {
     const message =
       (error.response && error.response.data && error.response.data.message) ||
@@ -116,6 +130,9 @@ export const SavedBinSlice = createSlice({
         state.isSuccess = true;
         state.isLoading = false;
         state.saved_items.push(action.payload.data.data[0]);
+      })
+      .addCase(GetSaved.fulfilled, (state, action) => {
+        state.saved_lil = action.payload.data.saved_items;
       });
     // .addCase(CleanFavorites.pending, (state) => {
     //   state.isLoading = true;

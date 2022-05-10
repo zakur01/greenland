@@ -1,6 +1,6 @@
 .item {
   width: 20rem;
-  height: 20rem;
+  height: 30rem;
   color: white;
   z-index: 2;
   //   background-color: rgba(128, 128, 128, 0.237);
@@ -9,7 +9,9 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  cursor: pointer;
+  img {
+    cursor: pointer;
+  }
 }
 .image {
   border-radius: 10px;

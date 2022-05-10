@@ -9,6 +9,7 @@ function Navbar() {
   const router = useRouter();
   const dispatch = useDispatch();
   const { User, isAuthenticated } = useSelector((state) => state.auth);
+  const { saved_lil } = useSelector((state) => state.savedbin);
   const logginout = () => {
     dispatch(reset());
     dispatch(LogOut());
@@ -30,7 +31,10 @@ function Navbar() {
           <h1>Корзина</h1>
         </Link>
         <Link href="/saved">
-          <h1>Сохранённые</h1>
+          <h1>
+            Сохранённые
+            {/* {saved_lil.data.length > 0 ? saved_lil.data.length : ''} */}
+          </h1>
         </Link>
         {isAuthenticated ? (
           <Link href="/profile">

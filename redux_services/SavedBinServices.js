@@ -6,6 +6,11 @@ const get = async () => {
   return res;
 };
 
+const getSaved = async (user_id) => {
+  const res = await axios.get(`http://localhost:1337/api/users/${user_id}`);
+  return res;
+};
+
 const filter = async (filt) => {
   const res = await axios.get(
     'http://localhost:1337/api/products?filters[Category][$eq]=' +
@@ -32,10 +37,25 @@ const addToFavorites = async (title) => {
   return res;
 };
 
+const addToDb = async (title) => {
+  const item = await axios.get(
+    'http://localhost:1337/api/products?filters[Name][$eq]=' +
+      title +
+      '&populate=*'
+  );
+  const formData = {
+    saved_items: item.data,
+  };
+  const res = await axios.put('http://localhost:1337/api/users/7', formData);
+  return res;
+};
+
 const savedbinservices = {
   get,
+  getSaved,
   filter,
   addToFavorites,
+  addToDb,
   // cleanFavorites,
 };
 
