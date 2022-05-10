@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from '../styles/Navbar.module.scss';
 import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
@@ -30,12 +30,14 @@ function Navbar() {
         <Link href="/bin">
           <h1>Корзина</h1>
         </Link>
-        <Link href="/saved">
-          <h1>
-            Сохранённые
-            {/* {saved_lil.data.length > 0 ? saved_lil.data.length : ''} */}
-          </h1>
-        </Link>
+        {isAuthenticated && (
+          <Link href="/saved">
+            <h1>
+              Сохранённые (
+              {/* {saved_lil.data.length > 0 ? saved_lil.data.length : ''}) */}
+            </h1>
+          </Link>
+        )}
         {isAuthenticated ? (
           <Link href="/profile">
             <h1>Профиль ({User})</h1>

@@ -5,12 +5,12 @@ import styles from '../styles/Main.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { GetItems, GetSaved } from '../redux_slices/SavedBinSlice';
 export default function Main({ items }) {
-  const { user_id } = useSelector((state) => state.auth);
+  const { user_id, isAuthenticated } = useSelector((state) => state.auth);
   const { main_items } = useSelector((state) => state.savedbin);
   const dispatch = useDispatch();
   // console.log(items);
   useEffect(() => {
-    dispatch(GetSaved(user_id));
+    if (isAuthenticated) dispatch(GetSaved(user_id));
     dispatch(GetItems());
   }, []);
   return (
