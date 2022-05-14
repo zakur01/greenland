@@ -24,7 +24,7 @@ function Navbar() {
         </Link>
       </div>
       <div className={styles.right}>
-        <Link href="">
+        <Link href="/aboutus">
           <h1>О нас</h1>
         </Link>
         <Link href="/bin">
@@ -39,12 +39,19 @@ function Navbar() {
           </Link>
         )}
         {isAuthenticated ? (
-          <Link href="/profile">
-            <h1>Профиль ({User})</h1>
-          </Link>
+          <div>
+            <Link href="/profile">
+              <h1>Профиль ({User})</h1>
+            </Link>
+          </div>
         ) : (
           <Link href="/register">
             <h1>Регистрация</h1>
+          </Link>
+        )}
+        {User == 'alen3' && (
+          <Link href="/additem">
+            <h1>Добавить товар</h1>
           </Link>
         )}
         {isAuthenticated ? null : (

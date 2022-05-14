@@ -8,7 +8,7 @@ import axios from 'axios';
 function Item({ title, description, image, id }) {
   const dispatch = useDispatch();
   const { saved_items } = useSelector((state) => state.savedbin);
-  const { user_id } = useSelector((state) => state.auth);
+  const { user_id, isAuthenticated } = useSelector((state) => state.auth);
   // const { user_id } = useSelector((state) => {
   //   state.auth;
   // });
@@ -64,7 +64,9 @@ function Item({ title, description, image, id }) {
             </div>
           </Link>
         </div>
-        <button onClick={addToFavorites}>В избранное</button>
+        {isAuthenticated && (
+          <button onClick={addToFavorites}>В избранное</button>
+        )}
         <button onClick={addToBin}>В корзину</button>
       </div>
     </>
