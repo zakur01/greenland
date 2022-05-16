@@ -3,12 +3,15 @@ import styles from '../styles/Item.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import { AddToFavorites } from '../redux_slices/SavedBinSlice';
+import { AddToFavorites, GetItems } from '../redux_slices/SavedBinSlice';
+import { open, close } from '../redux_slices/ModalSlice';
+
 import axios from 'axios';
-function Item({ title, description, image, id }) {
+function Item({ title, description, image, id, price }) {
   const dispatch = useDispatch();
   const { saved_items } = useSelector((state) => state.savedbin);
-  const { user_id, isAuthenticated } = useSelector((state) => state.auth);
+  const { user_id, isAuthenticated, User } = useSelector((state) => state.auth);
+  const { message } = useSelector((state) => state.modal);
   // const { user_id } = useSelector((state) => {
   //   state.auth;
   // });
@@ -42,32 +45,49 @@ function Item({ title, description, image, id }) {
       await axios.put(' http://localhost:1337/api/users/' + user_id, formData);
     res();
   };
-  const addToBin = () => {
-    dispatch(AddToBin(title));
+  // const addToBin = () => {
+  //   dispatch(AddToBin(title));
+  // };
+  //delete item
+  const deleteItem = () => {
+    const res = async () =>
+      await axios.delete('http://localhost:1337/api/products/' + id);
+
+    res();
+    dispatch(open(`Вы удалили "${title}"`));
+    setTimeout(() => {
+      dispatch(close());
+      dispatch(GetItems());
+    }, 1000);
   };
+
   return (
     <>
       <div className={styles.item}>
         <h1>{title}</h1>
-        <h2>{description}</h2>
+        <h2>{description ? description : <br></br>}</h2>
         <div className={styles.image_wrapper}>
           <Link href={`/${id}`}>
             <div className="">
-              <Image
-                className={styles.image}
-                width="200px"
-                height="200px"
-                src={image}
-                // layout="responsive"
-                objectFit="cover"
-              />
+              {image && (
+                <Image
+                  className={styles.image}
+                  width="200px"
+                  height="200px"
+                  src={image}
+                  // layout="responsive"
+                  objectFit="cover"
+                />
+              )}
             </div>
           </Link>
         </div>
+        <h2>{price}</h2>
         {isAuthenticated && (
           <button onClick={addToFavorites}>В избранное</button>
         )}
-        <button onClick={addToBin}>В корзину</button>
+        {/* <button onClick={addToBin}>В корзину</button> */}
+        {User == 'alen3' && <button onClick={deleteItem}>Удалить</button>}
       </div>
     </>
   );

@@ -22,6 +22,7 @@ export default function Main({ items }) {
               id={item.id}
               title={item.attributes.Name}
               description={item.attributes.Description}
+              price={item.attributes.Price}
               image={
                 `http://localhost:1337` +
                 item.attributes.Photo.data.attributes.url

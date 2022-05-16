@@ -33,7 +33,7 @@ function Navbar() {
         {isAuthenticated && (
           <Link href="/saved">
             <h1>
-              Сохранённые (
+              Сохранённые
               {/* {saved_lil.data.length > 0 ? saved_lil.data.length : ''}) */}
             </h1>
           </Link>

@@ -5,7 +5,7 @@ import styles from '../styles/AboutUs.module.scss';
 
 function AboutUs() {
   return (
-    <div>
+    <div className={styles.aboutus}>
       <h1>О нас</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium

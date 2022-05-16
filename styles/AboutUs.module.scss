@@ -1,4 +1,14 @@
-.textarea2 {
-  width: 500px;
-  height: 500px;
+.aboutus {
+  width: calc(100vw - 15rem);
+  padding: 10rem 10rem 15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  align-items: center;
+  h1 {
+    font-size: 2rem;
+  }
+  p {
+    font-size: 1.25rem;
+  }
 }

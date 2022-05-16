@@ -1,10 +1,14 @@
 import React from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { open, close } from '../redux_slices/ModalSlice';
 import styles from '../styles/AddItem.module.scss';
 //добавление товара. название, описание, цена и фотография
 function AddItem() {
+  const dispatch = useDispatch();
+  const router = useRouter();
   const { user_id } = useSelector((state) => state.auth);
   const [name, setName] = useState();
   const [description, setDescription] = useState();
@@ -35,6 +39,13 @@ function AddItem() {
         .post('http://localhost:1337/api/products', formData)
         .then((res) => console.log(res));
     res();
+    dispatch(open(`Вы добавили "${name}"`));
+    setTimeout(() => {
+      dispatch(close());
+    }, 1000);
+    setTimeout(() => {
+      router.push('/');
+    }, 1600);
   };
   return (
     <div className={styles.additem}>
