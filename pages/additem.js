@@ -9,6 +9,7 @@ function AddItem() {
   const [name, setName] = useState();
   const [description, setDescription] = useState();
   const [price, setPrice] = useState();
+  const [category, setCategory] = useState();
 
   const [file, setFile] = useState();
   const formData = new FormData();
@@ -16,6 +17,7 @@ function AddItem() {
     Name: name,
     Description: description,
     Price: price,
+    Category: category,
     user_product: user_id,
   };
   formData.append('data', JSON.stringify(data));
@@ -75,8 +77,21 @@ function AddItem() {
           onChange={imageChange}
         />
       </div>
-      <p className="p-4 bg-gray-500 w-21">{file ? file.name : 'nothing'}</p>
-      <button onClick={sendItem}>Отправить</button>
+      <label htmlFor="category">Категория: </label>
+      <select
+        onChange={(e) => setCategory(e.target.value)}
+        className="color black"
+        name="category"
+        id="category"
+      >
+        <option value="cosmetics">Косметика</option>
+        <option value="supplements">БАДы</option>
+        <option value="house">Для Дома</option>
+        <option value="books">Книги</option>
+        <option value="other">Разное</option>
+        <button onClick={sendItem}>Отправить</button>
+      </select>
+      <button onClick={sendItem}>Добавить</button>
     </div>
   );
 }
