@@ -65,6 +65,9 @@ function Item({ title, description, image, id, price, bin }) {
         });
     };
     res();
+    if (typeof window !== 'undefined') {
+      localStorage.getItem('bin');
+    }
     alert('hello');
   };
   //delete item
@@ -101,11 +104,11 @@ function Item({ title, description, image, id, price, bin }) {
             </div>
           </Link>
         </div>
-        <h2 className="font-bold text-lg">{price}</h2>
+        <h2 className="font-bold text-lg">{price + 'с.'}</h2>
         {isAuthenticated && (
           <button onClick={addToFavorites}>В избранное</button>
         )}
-        {bin && <button onClick={addToBin}>В корзину</button>}
+        {bin == 'true' && <button onClick={addToBin}>В корзину</button>}
         {User == 'alen3' && <button onClick={deleteItem}>Удалить</button>}
       </div>
     </>

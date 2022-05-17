@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
 import styles from '../styles/Bin.module.scss';
 import Item from '../components/Item';
-
 let localBin = [];
 if (typeof window !== 'undefined') {
   localBin = JSON.parse(localStorage.getItem('bin'));
   if (localBin == null) localBin = [];
 }
+
 function Bin() {
+  const [local, setLocal] = useState(null);
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setLocal(JSON.parse(localStorage.getItem('bin')));
+    }
+  }, []);
   return (
     <div className={styles.container}>
       <div className={styles.bin}>
-        {localBin && localBin.length > 0
-          ? localBin.map((item) => (
+        {local && local.length > 0
+          ? local.map((item) => (
               <Item
                 title={item[0].attributes.Name}
                 description={item[0].attributes.Description}
@@ -31,15 +38,23 @@ function Bin() {
         <div className={styles.left}>
           {localBin &&
             localBin.length > 0 &&
-            localBin.map((item) => <h2>{item[0].attributes.Name}</h2>)}
+            localBin.map((item) => (
+              <div>
+                <h2>{item[0].attributes.Name}</h2>
+              </div>
+            ))}
         </div>
         <div className={styles.right}>
-          {localBin.length > 0 &&
+          {localBin &&
+            localBin.length > 0 &&
             localBin.map((item) => <h2>{item[0].attributes.Price}</h2>)}
-          Итого:{' '}
-          {localBin
-            .map((item) => parseInt(item[0].attributes.Price))
-            .reduce((acc, amount) => acc + amount)}
+          <h2 className={styles.sum}>
+            {localBin &&
+              localBin.length > 0 &&
+              localBin
+                .map((item) => parseInt(item[0].attributes.Price))
+                .reduce((acc, amount) => acc + amount)}
+          </h2>
         </div>
       </div>
     </div>

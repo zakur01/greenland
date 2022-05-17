@@ -4,7 +4,11 @@ import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
 import { reset, LogOut } from '../redux_slices/AuthSlice';
 import { useRouter } from 'next/router';
-
+let localBin = [];
+if (typeof window !== 'undefined') {
+  localBin = JSON.parse(localStorage.getItem('bin'));
+  if (localBin == null) localBin = [];
+}
 function Navbar() {
   const router = useRouter();
   const dispatch = useDispatch();
