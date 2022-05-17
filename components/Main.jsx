@@ -27,6 +27,7 @@ export default function Main({ items }) {
                 `http://localhost:1337` +
                 item.attributes.Photo.data.attributes.url
               }
+              bin="true"
             />
           ))}
       </div>

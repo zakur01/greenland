@@ -1,4 +1,18 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f9f4;
+}
+
 .bin {
   width: calc(100vw - 15rem);
-  background: black;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.checkout {
+  border: 1px solid blue;
+  display: flex;
+  width: 30vw;
+  margin: 2rem auto;
+  justify-content: space-around;
 }

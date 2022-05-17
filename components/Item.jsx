@@ -11,7 +11,7 @@ import {
 import { open, close } from '../redux_slices/ModalSlice';
 
 import axios from 'axios';
-function Item({ title, description, image, id, price }) {
+function Item({ title, description, image, id, price, bin }) {
   const dispatch = useDispatch();
   const { saved_items } = useSelector((state) => state.savedbin);
   const { user_id, isAuthenticated, User } = useSelector((state) => state.auth);
@@ -105,7 +105,7 @@ function Item({ title, description, image, id, price }) {
         {isAuthenticated && (
           <button onClick={addToFavorites}>В избранное</button>
         )}
-        <button onClick={addToBin}>В корзину</button>
+        {bin && <button onClick={addToBin}>В корзину</button>}
         {User == 'alen3' && <button onClick={deleteItem}>Удалить</button>}
       </div>
     </>
