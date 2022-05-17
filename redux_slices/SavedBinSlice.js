@@ -7,10 +7,13 @@ const savedItemsLocal =
     ? JSON.parse(localStorage.getItem('favorites'))
     : [];
 
+const binItemsLocal =
+  typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('bin')) : [];
+
 const initialState = {
   saved_items: savedItemsLocal ? savedItemsLocal : [],
   saved_lil: [],
-  bin_items: [],
+  bin_items: binItemsLocal ? binItemsLocal : [],
   main_items: [],
   // isAuthenticated: false,
   isError: false,

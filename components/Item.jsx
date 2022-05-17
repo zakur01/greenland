@@ -3,7 +3,11 @@ import styles from '../styles/Item.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import { AddToFavorites, GetItems } from '../redux_slices/SavedBinSlice';
+import {
+  AddToFavorites,
+  GetItems,
+  AddToBin,
+} from '../redux_slices/SavedBinSlice';
 import { open, close } from '../redux_slices/ModalSlice';
 
 import axios from 'axios';
@@ -45,9 +49,24 @@ function Item({ title, description, image, id, price }) {
       await axios.put(' http://localhost:1337/api/users/' + user_id, formData);
     res();
   };
-  // const addToBin = () => {
-  //   dispatch(AddToBin(title));
-  // };
+  const addToBin = () => {
+    const res = async () => {
+      await axios
+        .get(
+          'http://localhost:1337/api/products?filters[id][$eq]=' +
+            id +
+            '&populate=*'
+        )
+        .then((res) => {
+          let oldLocal = JSON.parse(localStorage.getItem('bin'));
+          if (oldLocal == null) oldLocal = [];
+          oldLocal.push(res.data.data);
+          localStorage.setItem('bin', JSON.stringify(oldLocal));
+        });
+    };
+    res();
+    alert('hello');
+  };
   //delete item
   const deleteItem = () => {
     const res = async () =>
@@ -82,11 +101,11 @@ function Item({ title, description, image, id, price }) {
             </div>
           </Link>
         </div>
-        <h2>{price}</h2>
+        <h2 className="font-bold text-lg">{price}</h2>
         {isAuthenticated && (
           <button onClick={addToFavorites}>В избранное</button>
         )}
-        {/* <button onClick={addToBin}>В корзину</button> */}
+        <button onClick={addToBin}>В корзину</button>
         {User == 'alen3' && <button onClick={deleteItem}>Удалить</button>}
       </div>
     </>

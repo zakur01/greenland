@@ -1,19 +1,16 @@
 .main {
   display: flex;
-  color: white;
   min-height: calc(100vh - 6rem);
   background: black;
-  max-width: calc(100vw - 15rem); // width: calc(100vw - 15rem);
   .right {
-    // border: 1px solid red;
-    background-color: #8a3d7b;
-    // background-color: #fbf8f1;
-    min-width: calc(100vw - 15rem);
-    // max-width: calc(100vw - 14.9rem);
+    border: 1px solid red;
+
+    background-color: #f4f9f4;
+    width: calc(100vw - 15rem);
+
     display: grid;
-    // grid-gap: 1.5rem;
-    // grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    // grid-gap: 5rem;
     grid-template-columns: repeat(3, 1fr);
-    // justify-content: center;
+    // justify-content: space-evenly;
   }
 }

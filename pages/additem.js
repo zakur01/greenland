@@ -97,7 +97,7 @@ function AddItem() {
       >
         <option value="cosmetics">Косметика</option>
         <option value="supplements">БАДы</option>
-        <option value="house">Для Дома</option>
+        <option value="home">Для Дома</option>
         <option value="books">Книги</option>
         <option value="other">Разное</option>
         <button onClick={sendItem}>Отправить</button>
