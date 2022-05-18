@@ -23,6 +23,12 @@ function Bin() {
         return i !== parseInt(index);
       })
     );
+
+    if (typeof window !== 'undefined') {
+      let oldLocal = JSON.parse(localStorage.getItem('bin'));
+      oldLocal.splice(e.target.getAttribute('id'), 1);
+      localStorage.setItem('bin', JSON.stringify(oldLocal));
+    }
   };
 
   return (
