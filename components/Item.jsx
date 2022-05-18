@@ -68,7 +68,7 @@ function Item({ title, description, image, id, price, bin }) {
     if (typeof window !== 'undefined') {
       localStorage.getItem('bin');
     }
-    alert('hello');
+    // alert('hello');
   };
   //delete item
   const deleteItem = () => {
