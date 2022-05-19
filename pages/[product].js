@@ -35,7 +35,7 @@ export default function Product({ prod }) {
         </a>
         <h1>{prod.attributes.Name}</h1>
         <h1>{prod.attributes.Description}</h1>
-        <h1>{prod.attributes.Price}</h1>
+        <h1>{prod.attributes.Price}c.</h1>
 
         <Image
           src={`http://localhost:1337${prod.attributes.Photo.data.attributes.url}`}

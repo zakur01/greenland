@@ -3,6 +3,7 @@
   flex-direction: column;
   background-color: #f4f9f4;
   align-items: center;
+  justify-content: center;
 }
 
 .bin {
@@ -40,15 +41,27 @@
 }
 
 .form {
-  // border: 1px solid black;
-  width: 50vw;
+  // border: 1px solid red;
+  // margin-left:
+  width: 20vw;
   height: 20rem;
   display: flex;
+  gap: 0.5rem;
   flex-direction: column;
   input {
     border: 1px solid black;
   }
-  input:submit {
-    color: red;
+  input:last-child {
+    margin-top: 1.5rem;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    &:hover {
+      background: rgba(0, 0, 0, 0.445);
+      color: white;
+    }
   }
+}
+
+.checkout {
+  width: 20rem;
 }
