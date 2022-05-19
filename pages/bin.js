@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
+import Link from 'next/link';
 import styles from '../styles/Bin.module.scss';
 import Item from '../components/Item';
+import Meta from '../components/Meta';
 let localBin = [];
 if (typeof window !== 'undefined') {
   localBin = JSON.parse(localStorage.getItem('bin'));
@@ -32,53 +34,64 @@ function Bin() {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.bin}>
-        {local && local.length > 0
-          ? local.map((item, index) => (
-              <div id={index} className={styles.bin_item}>
-                <Item
-                  title={item[0].attributes.Name}
-                  description={item[0].attributes.Description}
-                  image={
-                    `http://localhost:1337` +
-                    item[0].attributes.Photo.data.attributes.url
-                  }
-                  id={item[0].id}
-                  price={item[0].attributes.Price}
-                  bin="false"
-                />
-                <button id={index} onClick={deleteItem}>
-                  Удалить из корзины
-                </button>
-              </div>
-            ))
-          : 'nothing'}
-      </div>
-      <div className={styles.checkout}>
-        <div className={styles.left}>
-          {local &&
-            local.length > 0 &&
-            local.map((item) => (
-              <div>
-                <h2>{item[0].attributes.Name}</h2>
-              </div>
-            ))}
+    <>
+      <Meta title="Корзина" />
+      <div className={styles.container}>
+        <div className={styles.bin}>
+          {local && local.length > 0
+            ? local.map((item, index) => (
+                <div id={index} className={styles.bin_item}>
+                  <Item
+                    title={item[0].attributes.Name}
+                    description={item[0].attributes.Description}
+                    image={
+                      `http://localhost:1337` +
+                      item[0].attributes.Photo.data.attributes.url
+                    }
+                    id={item[0].id}
+                    price={item[0].attributes.Price}
+                    bin="false"
+                  />
+                  <button id={index} onClick={deleteItem}>
+                    Удалить из корзины
+                  </button>
+                </div>
+              ))
+            : 'nothing'}
         </div>
-        <div className={styles.right}>
-          {local &&
-            local.length > 0 &&
-            local.map((item) => <h2>{item[0].attributes.Price}</h2>)}
-          <h2 className={styles.sum}>
+        <div className={styles.checkout}>
+          <div className={styles.left}>
             {local &&
               local.length > 0 &&
-              local
-                .map((item) => parseInt(item[0].attributes.Price))
-                .reduce((acc, amount) => acc + amount)}
-          </h2>
+              local.map((item) => (
+                <div>
+                  <h2>{item[0].attributes.Name}</h2>
+                </div>
+              ))}
+          </div>
+          <div className={styles.right}>
+            {local &&
+              local.length > 0 &&
+              local.map((item) => <h2>{item[0].attributes.Price}</h2>)}
+            <h2 className={styles.sum}>
+              {local &&
+                local.length > 0 &&
+                local
+                  .map((item) => parseInt(item[0].attributes.Price))
+                  .reduce((acc, amount) => acc + amount)}
+            </h2>
+          </div>
+        </div>
+
+        <div className={styles.form}>
+          <label htmlFor="phone">Ваш номер телефона: </label>
+          <input type="text" name="phone" id="phone" />
+          <label htmlFor="address">Ваш адрес:</label>
+          <input type="text" name="address" id="address" />
+          <input type="submit" value="Отправить" />
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

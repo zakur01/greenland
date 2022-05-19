@@ -12,7 +12,6 @@ export default function Main({ items }) {
   useEffect(() => {
     if (isAuthenticated) dispatch(GetSaved(user_id));
     dispatch(GetItems());
-    JSON.parse(localStorage.getItem('bin'));
   }, []);
   return (
     <div className={styles.main}>

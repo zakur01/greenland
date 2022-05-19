@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../styles/Navbar.module.scss';
 import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
@@ -19,7 +19,6 @@ function Navbar() {
     dispatch(LogOut());
     router.push('/');
   };
-
   return (
     <div className={styles.navbar}>
       <div className={styles.left}>

@@ -1,17 +1,16 @@
 .left {
   width: 15rem;
   min-width: 15rem;
-  // background: #005395;
-  background-color: #a7d7c5;
-  color: #416260;
+  background-color: #f4f9f4;
 
+  color: #416260;
   min-height: calc(100vh - 6rem);
   display: flex;
   flex-direction: column;
   padding-top: 2rem;
   padding-left: 2rem;
   li {
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
     font-size: 1.25rem;
     cursor: pointer;
     margin-bottom: 1rem;

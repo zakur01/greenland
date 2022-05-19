@@ -1,23 +1,40 @@
 .navbar {
   width: 100vw;
   height: 6rem;
-  background: #012c4b;
   // background-color: #54bab9;
   color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 3rem;
+  background: linear-gradient(-45deg, #77b255, #317773);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
   h1 {
     cursor: pointer;
     font-size: 1.5rem;
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
     &:hover {
       letter-spacing: 0.1rem;
-      color: rgb(152, 41, 41);
+      color: pink;
     }
   }
-
+  .left {
+    h1 {
+      font-size: 2.25rem;
+    }
+  }
   .right {
     display: flex;
     gap: 1.5rem;
