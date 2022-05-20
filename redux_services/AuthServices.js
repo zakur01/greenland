@@ -3,7 +3,7 @@ const api_url = 'http://localhost:1337/api/';
 
 const register = async (formData) => {
   const res = await axios.post(
-    'http://localhost:1337/api/auth/local/register',
+    'https://greenlandstrapi.herokuapp.com/api/auth/local/register',
     formData
   );
   // if (res) localStorage.setItem('user', JSON.stringify(res.data));
@@ -14,7 +14,10 @@ const register = async (formData) => {
 };
 
 const login = async (formData) => {
-  const res = await axios.post(api_url + 'auth/local/', formData);
+  const res = await axios.post(
+    'https://greenlandstrapi.herokuapp.com/api/auth/local/',
+    formData
+  );
   if (typeof window !== 'undefined') {
     if (res) localStorage.setItem('user', JSON.stringify(res.data));
   }

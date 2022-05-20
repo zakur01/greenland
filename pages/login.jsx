@@ -35,7 +35,6 @@ function Login({ setModule, changeHovered }) {
     e.preventDefault();
     dispatch(LoginAuth(loginPayload))
       .then(unwrapResult)
-      .then((obj) => console.log({ obj }))
       .catch((obj) => setError(obj.data.error.message));
     router.push('/');
   };

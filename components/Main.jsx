@@ -23,10 +23,7 @@ export default function Main({ items }) {
               title={item.attributes.Name}
               description={item.attributes.Description}
               price={item.attributes.Price}
-              image={
-                `https://greenlandstrapi.herokuapp.com` +
-                item.attributes.Photo.data.attributes.url
-              }
+              image={item.attributes.Photo.data.attributes.url}
               bin="true"
             />
           ))}

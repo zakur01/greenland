@@ -36,7 +36,7 @@ function AddItem() {
   const sendItem = () => {
     const res = async () =>
       await axios
-        .post('http://localhost:1337/api/products', formData)
+        .post('https://greenlandstrapi.herokuapp.com/api/products', formData)
         .then((res) => console.log(res));
     res();
     dispatch(open(`Вы добавили "${name}"`));

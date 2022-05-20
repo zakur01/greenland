@@ -38,7 +38,7 @@ export default function Product({ prod }) {
         <h1>{prod.attributes.Price}c.</h1>
 
         <Image
-          src={`http://localhost:1337${prod.attributes.Photo.data.attributes.url}`}
+          src={prod.attributes.Photo.data.attributes.url}
           objectFit="cover"
           width="300px"
           height="300px"

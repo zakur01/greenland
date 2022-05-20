@@ -53,7 +53,7 @@ function Item({ title, description, image, id, price, bin }) {
     const res = async () => {
       await axios
         .get(
-          'http://localhost:1337/api/products?filters[id][$eq]=' +
+          'https://greenlandstrapi.herokuapp.com/api/products?filters[id][$eq]=' +
             id +
             '&populate=*'
         )
@@ -73,7 +73,9 @@ function Item({ title, description, image, id, price, bin }) {
   //delete item
   const deleteItem = () => {
     const res = async () =>
-      await axios.delete('http://localhost:1337/api/products/' + id);
+      await axios.delete(
+        'https://greenlandstrapi.herokuapp.com/api/products/' + id
+      );
 
     res();
     dispatch(open(`Вы удалили "${title}"`));
@@ -109,7 +111,7 @@ function Item({ title, description, image, id, price, bin }) {
           <button onClick={addToFavorites}>В избранное</button>
         )}
         {bin == 'true' && <button onClick={addToBin}>В корзину</button>}
-        {User == 'alen3' && bin == 'true' && (
+        {User == 'admin' && bin == 'true' && (
           <button onClick={deleteItem}>Удалить</button>
         )}
       </div>

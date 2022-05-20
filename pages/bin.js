@@ -66,7 +66,7 @@ function Bin() {
                     title={item[0].attributes.Name}
                     description={item[0].attributes.Description}
                     image={
-                      `http://localhost:1337` +
+                      `https://greenlandstrapi.herokuapp.com` +
                       item[0].attributes.Photo.data.attributes.url
                     }
                     id={item[0].id}

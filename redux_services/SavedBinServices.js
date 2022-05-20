@@ -43,7 +43,7 @@ const addToFavorites = async (title) => {
 
 const addToDb = async (title) => {
   const item = await axios.get(
-    'http://localhost:1337/api/products?filters[Name][$eq]=' +
+    'https://greenlandstrapi.herokuapp.com/api/products?filters[Name][$eq]=' +
       title +
       '&populate=*'
   );

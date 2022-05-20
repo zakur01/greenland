@@ -52,7 +52,7 @@ function Navbar() {
             <h1>Регистрация</h1>
           </Link>
         )}
-        {User == 'alen3' && (
+        {User == 'admin' && (
           <Link href="/additem">
             <h1>Добавить товар</h1>
           </Link>

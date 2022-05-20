@@ -6,6 +6,6 @@ const nextConfig = {
 module.exports = {
   nextConfig,
   images: {
-    domains: ['greenlandstrapi.herokuapp.com'],
+    domains: ['greenlandstrapi.herokuapp.com', 'res.cloudinary.com'],
   },
 };

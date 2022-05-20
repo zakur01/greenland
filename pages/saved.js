@@ -16,7 +16,10 @@ function Saved() {
       saved_items: [],
     };
     const res = async () =>
-      await axios.put('http://localhost:1337/api/users/' + user_id, formData);
+      await axios.put(
+        'https://greenlandstrapi.herokuapp.com/api/users/' + user_id,
+        formData
+      );
     res();
     dispatch(GetSaved(user_id));
   };
