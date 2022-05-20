@@ -4,6 +4,10 @@ import Link from 'next/link';
 import styles from '../styles/Bin.module.scss';
 import Item from '../components/Item';
 import Meta from '../components/Meta';
+import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
+import { open, close } from '../redux_slices/ModalSlice';
+
 let localBin = [];
 if (typeof window !== 'undefined') {
   localBin = JSON.parse(localStorage.getItem('bin'));
@@ -11,6 +15,8 @@ if (typeof window !== 'undefined') {
 }
 
 function Bin() {
+  const router = useRouter();
+  const dispatch = useDispatch();
   const [local, setLocal] = useState(null);
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -32,7 +38,22 @@ function Bin() {
       localStorage.setItem('bin', JSON.stringify(oldLocal));
     }
   };
+  const sendPurchase = () => {
+    if (typeof window !== 'undefined') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
 
+    dispatch(open('Спасибо, вы оставили свой заказ'));
+    setTimeout(() => {
+      dispatch(close());
+    }, 1200);
+    setTimeout(() => {
+      router.push('/');
+    }, 2000);
+  };
   return (
     <>
       <Meta title="Корзина" />
@@ -72,13 +93,13 @@ function Bin() {
           <div className={styles.right}>
             {local &&
               local.length > 0 &&
-              local.map((item) => <h2>{item[0].attributes.Price}</h2>)}
+              local.map((item) => <h2>{item[0].attributes.Price}c</h2>)}
             <h2 className={styles.sum}>
               {local &&
                 local.length > 0 &&
                 local
                   .map((item) => parseInt(item[0].attributes.Price))
-                  .reduce((acc, amount) => acc + amount)}
+                  .reduce((acc, amount) => acc + amount) + 'c'}
             </h2>
           </div>
         </div>
@@ -88,7 +109,7 @@ function Bin() {
           <input type="text" name="phone" id="phone" />
           <label htmlFor="address">Ваш адрес:</label>
           <input type="text" name="address" id="address" />
-          <input type="submit" value="Отправить" />
+          <input type="submit" value="Отправить" onClick={sendPurchase} />
         </div>
       </div>
     </>

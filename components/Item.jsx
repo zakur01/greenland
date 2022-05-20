@@ -105,11 +105,13 @@ function Item({ title, description, image, id, price, bin }) {
           </Link>
         </div>
         <h2 className="font-bold text-lg">{price + 'с.'}</h2>
-        {isAuthenticated && (
+        {isAuthenticated && bin == 'true' && (
           <button onClick={addToFavorites}>В избранное</button>
         )}
         {bin == 'true' && <button onClick={addToBin}>В корзину</button>}
-        {User == 'alen3' && <button onClick={deleteItem}>Удалить</button>}
+        {User == 'alen3' && bin == 'true' && (
+          <button onClick={deleteItem}>Удалить</button>
+        )}
       </div>
     </>
   );
