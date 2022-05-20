@@ -6,7 +6,7 @@ function Meta({ title, description, keywords }) {
     <Head>
       <style>
         @import
-        url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap");
+        url(&quot;https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap&quot;);
       </style>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="keywords" content={keywords} />

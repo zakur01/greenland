@@ -29,7 +29,7 @@ function Saved() {
   return (
     <div>
       {saved_lil.data && saved_lil.data.length > 0
-        ? saved_lil.data.map((item) => <h1>{item.attributes.Name}</h1>)
+        ? saved_lil.data.map((item) => <h1 key={id}>{item.attributes.Name}</h1>)
         : ''}
       <button onClick={clean}>Очистить</button>
     </div>
