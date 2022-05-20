@@ -30,7 +30,9 @@ export default function Home({ items }) {
   );
 }
 export async function getStaticProps() {
-  const res = await fetch('http:/localhost:1337/api/products?populate=*');
+  const res = await fetch(
+    'https:/greenlandstrapi.herokuapp.com/api/products?populate=*'
+  );
   const data = await res.json();
   const items = data.data;
   // console.log

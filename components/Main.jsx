@@ -24,7 +24,7 @@ export default function Main({ items }) {
               description={item.attributes.Description}
               price={item.attributes.Price}
               image={
-                `http://localhost:1337` +
+                `https://greenlandstrapi.herokuapp.com` +
                 item.attributes.Photo.data.attributes.url
               }
               bin="true"

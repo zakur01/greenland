@@ -6,6 +6,6 @@ const nextConfig = {
 module.exports = {
   nextConfig,
   images: {
-    domains: ['localhost'],
+    domains: ['greenlandstrapi.herokuapp.com'],
   },
 };
