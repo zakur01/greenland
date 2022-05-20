@@ -30,9 +30,9 @@ export default function Product({ prod }) {
   return (
     <div className={styles.item_single}>
       <div>
-        <a href="/" onClick={() => router.back()}>
+        <div href="/" onClick={() => router.back()}>
           Назад
-        </a>
+        </div>
         <h1>{prod.attributes.Name}</h1>
         <h1>{prod.attributes.Description}</h1>
         <h1>{prod.attributes.Price}c.</h1>

@@ -61,7 +61,7 @@ function Bin() {
         <div className={styles.bin}>
           {local && local.length > 0
             ? local.map((item, index) => (
-                <div id={index} className={styles.bin_item}>
+                <div key={index} id={index} className={styles.bin_item}>
                   <Item
                     title={item[0].attributes.Name}
                     description={item[0].attributes.Description}
@@ -85,7 +85,7 @@ function Bin() {
             {local &&
               local.length > 0 &&
               local.map((item) => (
-                <div>
+                <div key={id}>
                   <h2>{item[0].attributes.Name}</h2>
                 </div>
               ))}
@@ -93,7 +93,9 @@ function Bin() {
           <div className={styles.right}>
             {local &&
               local.length > 0 &&
-              local.map((item) => <h2>{item[0].attributes.Price}c</h2>)}
+              local.map((item) => (
+                <h2 key={id}>{item[0].attributes.Price}c</h2>
+              ))}
             <h2 className={styles.sum}>
               {local &&
                 local.length > 0 &&

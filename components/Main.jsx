@@ -17,8 +17,9 @@ export default function Main({ items }) {
     <div className={styles.main}>
       <div className={styles.right}>
         {main_items &&
-          main_items.map((item) => (
+          main_items.map((item, index) => (
             <Item
+              key={index}
               id={item.id}
               title={item.attributes.Name}
               description={item.attributes.Description}
