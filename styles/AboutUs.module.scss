@@ -12,3 +12,10 @@
     font-size: 1.25rem;
   }
 }
+
+@media (max-width: 700px) {
+  .aboutus {
+    width: 100vw;
+    padding: 4rem 3rem;
+  }
+}

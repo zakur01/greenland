@@ -29,7 +29,7 @@ export default function Product({ prod }) {
   };
   return (
     <div className={styles.item_single}>
-      <div>
+      <div className={styles.item}>
         <div href="/" onClick={() => router.back()}>
           Назад
         </div>

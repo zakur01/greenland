@@ -14,6 +14,7 @@
 @media (max-width: 700px) {
   .main {
     // height: calc(100vh - 5rem);
+    min-height: 100vh;
     .right {
       // display: none;
       border: 1px solid red;

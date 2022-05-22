@@ -58,6 +58,7 @@ function Bin() {
     <>
       <Meta title="Корзина" />
       <div className={styles.container}>
+        <h1>Корзина</h1>
         <div className={styles.bin}>
           {local && local.length > 0
             ? local.map((item, index) => (
@@ -65,10 +66,7 @@ function Bin() {
                   <Item
                     title={item[0].attributes.Name}
                     description={item[0].attributes.Description}
-                    image={
-                      `https://greenlandstrapi.herokuapp.com` +
-                      item[0].attributes.Photo.data.attributes.url
-                    }
+                    image={item[0].attributes.Photo.data.attributes.url}
                     id={item[0].id}
                     price={item[0].attributes.Price}
                     bin="false"
@@ -78,14 +76,14 @@ function Bin() {
                   </button>
                 </div>
               ))
-            : 'nothing'}
+            : ''}
         </div>
         <div className={styles.checkout}>
           <div className={styles.left}>
             {local &&
               local.length > 0 &&
-              local.map((item) => (
-                <div key={id}>
+              local.map((item, index) => (
+                <div key={index}>
                   <h2>{item[0].attributes.Name}</h2>
                 </div>
               ))}
@@ -93,8 +91,8 @@ function Bin() {
           <div className={styles.right}>
             {local &&
               local.length > 0 &&
-              local.map((item) => (
-                <h2 key={id}>{item[0].attributes.Price}c</h2>
+              local.map((item, index) => (
+                <h2 key={index}>{item[0].attributes.Price}c</h2>
               ))}
             <h2 className={styles.sum}>
               {local &&

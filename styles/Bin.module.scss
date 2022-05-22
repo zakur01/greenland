@@ -65,3 +65,17 @@
 .checkout {
   width: 20rem;
 }
+
+@media (max-width: 700px) {
+  .container {
+    padding-top: 5rem;
+  }
+  .bin {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+  }
+  .form {
+    width: 50vw;
+  }
+}
