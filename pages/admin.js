@@ -1,17 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-function Admin({ user }) {
-  return <div></div>;
+function Admin({}) {
+  const { User } = useSelector((state) => state.auth);
+  return (
+    <div>
+      <h1>{User ? User : ''}</h1>
+    </div>
+  );
 }
-
-// взять информацию о юзере
-// export async function getStaticProps() {
-//   const res = await fetch('https://greenlandstrapi.herokuapp.com/api/me');
-//   const data = res.json();
-//   const user = data.data;
-//   return {
-//     props: { user },
-//   };
-// }
 
 export default Admin;

@@ -5,9 +5,23 @@
   .right {
     background-color: #f4f9f4;
     width: calc(100vw - 15rem);
-
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     padding-bottom: 4rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .main {
+    // height: calc(100vh - 5rem);
+    .right {
+      // display: none;
+      border: 1px solid red;
+      width: 100vw;
+      justify-content: center !important;
+      align-items: center !important;
+      display: flex !important;
+      flex-direction: column;
+    }
   }
 }
