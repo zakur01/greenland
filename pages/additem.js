@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import FormData from 'form-data';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
