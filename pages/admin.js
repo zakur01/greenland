@@ -14,4 +14,4 @@ function Admin({ user }) {
 //   };
 // }
 
-// export default Admin;
+export default Admin;
