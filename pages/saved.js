@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import styles from '../styles/Saved.module.scss';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { CleanFavorites, GetSaved } from '../redux_slices/SavedBinSlice';
+import Item from '../components/Item';
 
 function Saved() {
   const dispatch = useDispatch();
@@ -45,13 +47,25 @@ function Saved() {
   }, []);
 
   return (
-    <div>
-      {savedlist.data == null && savedlist.data == undefined
-        ? '2'
-        : savedlist.data.map((item, index) => (
-            <h1 key={index}>{item.attributes.Name}</h1>
-          ))}
-      <button onClick={clean}>Очистить</button>
+    <div className={styles.container}>
+      <div className={styles.bin}>
+        {savedlist.data == null && savedlist.data == undefined
+          ? '2'
+          : savedlist.data.map((item, index) => (
+              // <h1 key={index}>{item.attributes.Name}</h1>
+              <Item
+                key={index}
+                title={item.attributes.Name}
+                description={item.attributes.Description}
+                image={item.attributes.Photo.data.attributes.url}
+                price={item.attributes.Price}
+                bin="true"
+              />
+            ))}
+      </div>
+      <button className={styles.clear} onClick={clean}>
+        Очистить
+      </button>
     </div>
   );
 }
