@@ -36,9 +36,11 @@ function AddItem() {
 
   const sendItem = () => {
     const res = async () =>
-      await axios
-        .post('https://greenlandstrapi.herokuapp.com/api/products', formData)
-        .then((res) => console.log(res));
+      await axios.post(
+        'https://greenlandstrapi.herokuapp.com/api/products',
+        formData
+      );
+
     res();
     dispatch(open(`Вы добавили "${name}"`));
     setTimeout(() => {
@@ -46,7 +48,7 @@ function AddItem() {
     }, 1000);
     setTimeout(() => {
       router.push('/');
-    }, 1600);
+    }, 2000);
   };
   return (
     <div className={styles.additem}>
