@@ -65,6 +65,10 @@ function Item({ title, description, image, id, price, bin }) {
         });
     };
     res();
+    dispatch(open('Добавлено в корзину'));
+    setTimeout(() => {
+      dispatch(close());
+    }, 1200);
     if (typeof window !== 'undefined') {
       localStorage.getItem('bin');
     }
