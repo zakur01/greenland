@@ -38,15 +38,19 @@ function Item({ title, description, image, id, price, bin }) {
     //   );
     // res();
     const item = await axios.get(
-      'http://localhost:1337/api/products?filters[Name][$eq]=' +
+      'https://greenlandstrapi.herokuapp.com/api/products?filters[Name][$eq]=' +
         title +
         '&populate=*'
     );
     const formData = {
       saved_items: item.data,
     };
+    console.log(item.data);
     const res = async () =>
-      await axios.put(' http://localhost:1337/api/users/' + user_id, formData);
+      await axios.put(
+        'https://greenlandstrapi.herokuapp.com/api/users/' + user_id,
+        formData
+      );
     res();
   };
   const addToBin = () => {

@@ -37,12 +37,14 @@ export default function Product({ prod }) {
         <h1>{prod.attributes.Description}</h1>
         <h1>{prod.attributes.Price}c.</h1>
 
-        <Image
-          src={prod.attributes.Photo.data.attributes.url}
-          objectFit="cover"
-          width="300px"
-          height="300px"
-        ></Image>
+        <Link href={prod.attributes.Photo.data.attributes.url}>
+          <Image
+            src={prod.attributes.Photo.data.attributes.url}
+            objectFit="cover"
+            width="300px"
+            height="300px"
+          ></Image>
+        </Link>
         <button onClick={addToBin}>В корзину</button>
       </div>
     </div>

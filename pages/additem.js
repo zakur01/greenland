@@ -3,6 +3,8 @@ import axios from 'axios';
 import FormData from 'form-data';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { GetItems, GetSaved } from '../redux_slices/SavedBinSlice';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { open, close } from '../redux_slices/ModalSlice';
 import styles from '../styles/AddItem.module.scss';
@@ -49,6 +51,7 @@ function AddItem() {
     setTimeout(() => {
       router.push('/');
     }, 2000);
+    dispatch(GetItems());
   };
   return (
     <div className={styles.additem}>

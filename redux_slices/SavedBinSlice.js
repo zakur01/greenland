@@ -12,7 +12,7 @@ const binItemsLocal =
 
 const initialState = {
   saved_items: savedItemsLocal ? savedItemsLocal : [],
-  saved_lil: [],
+  saved_lil: null,
   bin_items: binItemsLocal ? binItemsLocal : [],
   main_items: [],
   // isAuthenticated: false,
