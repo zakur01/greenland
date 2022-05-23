@@ -6,12 +6,26 @@
   padding-top: 10rem;
   margin: 0 auto;
   input {
-    border: 1px solid rgba(128, 128, 128, 0.459);
+    border: 1px solid rgba(128, 128, 128, 0.098);
+    border-radius: 3px;
     height: 2rem;
     margin: 0.5rem auto;
+    width: 20rem;
   }
   form {
     display: flex;
     flex-direction: column;
+  }
+
+  button {
+    border: 1px solid rgba(128, 128, 128, 0.221) !important;
+    border-radius: 3px;
+    height: 2rem;
+    margin-top: 1.5rem;
+    transition: all 0.4s ease;
+    &:hover {
+      background: rgba(128, 128, 128, 0.098);
+      // color: white;
+    }
   }
 }
