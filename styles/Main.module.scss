@@ -14,9 +14,11 @@
 @media (max-width: 700px) {
   .main {
     // height: calc(100vh - 5rem);
+    // padding-top: 5rem;
     min-height: 100vh;
     .right {
       // display: none;
+      padding-top: 4.5rem;
       border: 1px solid red;
       width: 100vw;
       justify-content: center !important;
